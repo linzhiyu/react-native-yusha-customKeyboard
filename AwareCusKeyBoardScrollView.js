@@ -145,7 +145,7 @@ export default class AwareCusKeyBoardScrollView extends PureComponent {
           (left, top, width, height) => {
             const windowHeight = Dimensions.get("window").height;
             const subHeight = windowHeight - CustomKeyboard.currentHeight;
-            const currentHeight = top + height + y + 30; //上下padding高度
+            const currentHeight = top + height + y + 50; //上下padding高度
             if (subHeight < currentHeight) {
               this.refs.scrollView.scrollTo({ y: currentHeight - subHeight });
             }
