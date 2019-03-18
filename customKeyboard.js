@@ -172,6 +172,10 @@ export class CustomTextInput extends Component {
   };
 
   _onChangeText = text => {
+    const { maxLength } = this.props;
+    if (maxLength && !!text && text.length > maxLength) {
+      return;
+    }
     this.setState({ text });
     this.props.onChangeText && this.props.onChangeText(text);
   };
