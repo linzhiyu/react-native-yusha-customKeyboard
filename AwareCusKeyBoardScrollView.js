@@ -78,8 +78,6 @@ export default class AwareCusKeyBoardScrollView extends PureComponent {
   }
 
   _showSysKeyborad = (frames: Object) => {
-    console.log("show system keyboard");
-
     //防止自定义键盘跳到系统键盘出bug
     this.resetTimeout && clearTimeout(this.resetTimeout);
 
