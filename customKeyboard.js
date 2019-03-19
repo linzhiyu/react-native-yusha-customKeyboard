@@ -47,29 +47,15 @@ const keyboardTypeRegistry = {};
 export const currentHeight = 215;
 
 export function addKeyBoardShowListener(listener) {
-  if (Platform.OS === "android") {
-    return NativeAppEventEmitter.addListener("showCustomKeyboard", data => {
-      listener(data);
-    });
-  } else {
-    Keyboard.addListener("keyboardDidShow", () => {
-      listener();
-    });
-    return "keyboardDidShow";
-  }
+  NativeAppEventEmitter.addListener("showCustomKeyboard", data => {
+    listener(data);
+  });
 }
 
 export function addKeyBoardHideListener(listener) {
-  if (Platform.OS === "android") {
-    return NativeAppEventEmitter.addListener("hideCustomKeyboard", data => {
-      listener(data);
-    });
-  } else {
-    Keyboard.addListener("keyboardDidHide", () => {
-      listener();
-    });
-    return "keyboardDidHide";
-  }
+  NativeAppEventEmitter.addListener("hideCustomKeyboard", data => {
+    listener(data);
+  });
 }
 
 export function removeKeyBoardListener(subscribtion) {
