@@ -1,6 +1,6 @@
 //@flow
 
-import React, { Component, PureComponent } from "react";
+import React, { Component, PureComponent } from 'react';
 
 import {
   ScrollView,
@@ -11,9 +11,9 @@ import {
   Platform,
   Keyboard,
   UIManager
-} from "react-native";
+} from 'react-native';
 
-import * as CustomKeyboard from "./customKeyboard";
+import * as CustomKeyboard from './customKeyboard';
 
 export default class AwareCusKeyBoardScrollView extends PureComponent {
   state: Object;
@@ -50,11 +50,11 @@ export default class AwareCusKeyBoardScrollView extends PureComponent {
       this._onReset
     );
     this.showKeyBoardSub = Keyboard.addListener(
-      "keyboardDidShow",
+      'keyboardDidShow',
       this._showSysKeyborad
     );
     this.hideKeyboardSub = Keyboard.addListener(
-      "keyboardDidHide",
+      'keyboardDidHide',
       this._hideSysKeyboard
     );
   }
@@ -82,15 +82,16 @@ export default class AwareCusKeyBoardScrollView extends PureComponent {
     this.resetTimeout && clearTimeout(this.resetTimeout);
 
     this.flag++;
+    this._onFocus();
   };
 
   _hideSysKeyboard = () => {
     this.flag--;
-    if (this.flag === 0) {
-      //之间切换状态到键盘不显示
-      this.showKeyBoard = false;
-      this._changeKeyBoardState();
-    }
+    // if (this.flag === 0) {
+    //之间切换状态到键盘不显示
+    this.showKeyBoard = false;
+    this._changeKeyBoardState();
+    // }
   };
 
   _onFocus = () => {
@@ -141,7 +142,7 @@ export default class AwareCusKeyBoardScrollView extends PureComponent {
           scrollViewNode,
           this._onError,
           (left, top, width, height) => {
-            const windowHeight = Dimensions.get("window").height;
+            const windowHeight = Dimensions.get('window').height;
             const subHeight = windowHeight - CustomKeyboard.currentHeight;
             const currentHeight = top + height + y + 50; //上下padding高度
             if (subHeight < currentHeight) {
