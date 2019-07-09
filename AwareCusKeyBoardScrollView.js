@@ -82,16 +82,26 @@ export default class AwareCusKeyBoardScrollView extends PureComponent {
     this.resetTimeout && clearTimeout(this.resetTimeout);
 
     this.flag++;
-    this._onFocus();
+    if (Platform.OS === 'ios') {
+      this._onFocus();
+    }
   };
 
   _hideSysKeyboard = () => {
     this.flag--;
-    // if (this.flag === 0) {
-    //之间切换状态到键盘不显示
-    this.showKeyBoard = false;
-    this._changeKeyBoardState();
-    // }
+    if (Platform.OS === 'ios') {
+      // if (this.flag === 0) {
+      //之间切换状态到键盘不显示
+      this.showKeyBoard = false;
+      this._changeKeyBoardState();
+      // }
+    } else {
+      if (this.flag === 0) {
+        // 之间切换状态到键盘不显示;
+        this.showKeyBoard = false;
+        this._changeKeyBoardState();
+      }
+    }
   };
 
   _onFocus = () => {
